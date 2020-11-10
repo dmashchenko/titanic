@@ -34,3 +34,7 @@ def extract_ticket_type(value):
 
     return 'OTHER_TICKET'
 
+
+def counting_values(data, feature1, feature2):
+    return data[[feature1, feature2]][data[feature2].isnull() == False].groupby([feature1], as_index=False) \
+        .mean().sort_values(by=feature2, ascending=False)
